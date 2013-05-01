@@ -123,6 +123,30 @@ Extracts strings to localise from L<Text::Xslate> templates.
 
 B<THIS IS A DEVELOPMENT RELEASE. API MAY CHANGE WITHOUT NOTICE>.
 
+=head1 VALID FORMATS
+
+Valid formats are:
+
+=over 4
+
+=item [% l('string') %]
+
+=item [% l('string %1', args[, ...]) %]
+
+=item [% IF l('string') = 'FOO' %]
+
+=back
+
+=head1 KNOWN FILE types
+
+=over 4
+
+=item .tt
+
+=item .html
+
+=back
+
 =head1 AUTHOR
 
 Kazuhiro Osawa E<lt>yappo {@} shibuya {dot} plE<gt>
