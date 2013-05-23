@@ -15,7 +15,7 @@ my $ext = Locale::Maketext::Extract->new(
         },
     },
     warnings => 1,
-    verbose  => 1,
+    verbose  => 0,
 );
 $ext->extract_file( File::Spec->catfile(qw/ t data hello.html /) );
 $ext->compile(1);
