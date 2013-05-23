@@ -2,7 +2,7 @@ package Locale::Maketext::Extract::Plugin::Xslate;
 use strict;
 use warnings;
 use parent qw(Locale::Maketext::Extract::Plugin::Base);
-our $VERSION = '0.0.2';
+our $VERSION = '0.0.3';
 our $DEBUG = 0;
 
 use Locale::Maketext::Extract;
