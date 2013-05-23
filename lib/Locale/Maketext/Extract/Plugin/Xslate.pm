@@ -47,7 +47,7 @@ sub walker {
                     if ($second && ref($second) eq 'ARRAY' && $second->[0] && ref($second->[0]) eq 'Text::Xslate::Symbol') {
                         my $value = $second->[0];
                         if ($value->arity eq 'literal') {
-                            $self->add_entry($value->value);
+                            $self->add_entry($value->value, $value->line);
                         }
                     }
                 }
