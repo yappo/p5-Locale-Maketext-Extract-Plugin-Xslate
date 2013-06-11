@@ -1,0 +1,15 @@
+: if $xxx == l('term') {
+: }
+
+: l('hello')
+
+: if defined $foo {
+: l('xslate syntax')
+:   if $xxx == l('term') {
+:   }
+: }
+
+oh my<: l("word") :>god
+<: l('values: %1 %2', arg1, arg2) :>
+<: l($through) :><: l('hello') :>
+<: l('nest1', l('nest2', l('nest3'))) :>
