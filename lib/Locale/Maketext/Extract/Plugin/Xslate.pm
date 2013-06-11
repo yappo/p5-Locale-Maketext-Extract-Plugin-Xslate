@@ -21,6 +21,7 @@ sub new {
     my $self = $class->SUPER::new($extensions);
     eval "use Text::Xslate::Syntax::$syntax;"; ## no critic
     die $@ if $@;
+    $self->{syntax}        = $syntax;
     $self->{xslate_parser} = "Text::Xslate::Syntax::$syntax"->new($args);
     $self;
 }
@@ -37,12 +38,13 @@ sub walker {
     $ast = [ $ast ] if $ast && ref($ast) eq 'Text::Xslate::Symbol';
     return unless $ast && ref($ast) eq 'ARRAY';
 
-    for my $sym (@{ $ast }) {
+    my $first_airty = $self->{syntax} eq 'Kolon' ? 'name' : 'variable';
 
+    for my $sym (@{ $ast }) {
         if ($sym->arity eq 'call' && $sym->value eq '(') {
             my $first = $sym->first;
             if ($first && ref($first) eq 'Text::Xslate::Symbol') {
-                if ($first->arity eq 'variable' && $first->value eq 'l') {
+                if ($first->arity eq $first_airty && $first->value eq 'l') {
                     my $second = $sym->second;
                     if ($second && ref($second) eq 'ARRAY' && $second->[0] && ref($second->[0]) eq 'Text::Xslate::Symbol') {
                         my $value = $second->[0];
