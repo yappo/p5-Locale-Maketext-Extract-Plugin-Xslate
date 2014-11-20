@@ -17,7 +17,7 @@ sub file_types {
 sub new {
     my($class, $args) = @_;
     my $extensions = delete $args->{extensions};
-    my $syntax     = delete $args->{syntax} || 'TTears';
+    my $syntax     = delete $args->{syntax} || 'TTerse';
     my $self = $class->SUPER::new($extensions);
     eval "use Text::Xslate::Syntax::$syntax;"; ## no critic
     die $@ if $@;
