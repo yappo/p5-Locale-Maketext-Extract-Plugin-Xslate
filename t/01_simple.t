@@ -26,6 +26,18 @@ my $tmp = File::Temp->new(UNLINK => 1);
 $ext->write_po($tmp->filename);
 like slurp($tmp->filename), qr{t/data/hello\.html:13}, 'contains line number';
 
+subtest 'default-syntax' => sub {
+    ok my $ext = Locale::Maketext::Extract->new(
+        plugins => {
+            xslate => {
+                extensions => ['html'],
+            },
+        },
+        warnings => 1,
+        verbose  => 0,
+    );
+};
+
 done_testing;
 
 sub slurp {
